@@ -7,28 +7,20 @@ namespace TestProject1
     public class UnitTest1
     {
         [Test]
-        public void TestMethod1()
+        public void ConvertingFloatingBinaryToDecimal()
         {
-            var decimalValue = 0.1156f;
-            var bytes = BitConverter.GetBytes(decimalValue);
-            //if (BitConverter.IsLittleEndian) Array.Reverse(bytes);
-
-            var converted = BitConverter.ToSingle(bytes, 0);
-            Assert.AreEqual(decimalValue, converted);
-        }
-
-        [Test]
-        public void TestMethod2()
-        {
-            var b = "0000000000000000.0001110110110110";
+            var binaryValue = "0000000000000000.0001110110110110";
             var decimalValue = 0.116058349609375;
 
-            var converted = BinaryToDecimal(b);
+            var converted = BinaryToDecimal(binaryValue);
 
             Assert.AreEqual(decimalValue, converted);
-
         }
 
+        /// <summary>
+        /// Solution found on https://www.geeksforgeeks.org/convert-binary-fraction-decimal/
+        /// Adding to my repository to never forget
+        /// </summary>
         private static double BinaryToDecimal(string binary)
         {
             var len = binary.Length;
